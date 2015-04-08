@@ -10,22 +10,50 @@ import java.util.ArrayList;
  * 02.04.2015
  */
 public class Settings {
-    @Option(name = "-o", usage = "name for zipFile", forbids = {"-i", "-p"})
-    private String zipFile;
+    @Option(name = "-zip", usage = "name for zipFile", forbids = {"-unzip", "-path"})
+    private static String zipFileName;
 
-    @Option(name = "-f", handler = StringArrayOptionHandler.class, depends = "-o")
-    private ArrayList<String> files;
+    @Option(name = "-add", usage = "add comment to archiver", depends = {"-zip", "-files"})
+    private static String addComment;
 
-    @Option(name = "-i", usage = "name for unzipFile", forbids = {"-o", "-f"})
-    private String unzipFile;
+    @Option(name = "-files", usage = "add files to zip", handler = StringArrayOptionHandler.class, depends = "-zip")
+    private static ArrayList<String> filesToZip;
 
-    @Option(name = "-p", usage = "set path folder to unzip", depends = "-i")
-    private String path;
+    @Option(name = "-unzip", usage = "name for unzipFile", forbids = {"-zip", "-add", "-files"})
+    private static String unzipFileName;
 
-    @Option(name = "-a", usage = "add comment to archiver", depends = {"-o", "-i"})
-    private String addComment;
+    @Option(name = "-path", usage = "set path folder to unzip", depends = "-unzip")
+    private static String pathToUnzip;
 
-    @Option(name = "-r", usage = "read comment", forbids = {"-o", "-a"})
-    private boolean readComment;
+    @Option(name = "-read", usage = "read comment")
+    private static boolean readComment;
+
+    public Settings() {
+
+    }
+
+    public static String getZipFileName() {
+        return zipFileName;
+    }
+
+    public static ArrayList<String> getFilesToZip() {
+        return filesToZip;
+    }
+
+    public static String getPathToUnzip() {
+        return pathToUnzip;
+    }
+
+    public static boolean isReadComment() {
+        return readComment;
+    }
+
+    public static String getAddComment() {
+        return addComment;
+    }
+
+    public static String getUnzipFileName() {
+        return unzipFileName;
+    }
 }
 

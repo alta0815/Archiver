@@ -1,0 +1,65 @@
+package com.un1acker.archiver.unzip;
+
+import com.un1acker.archiver.util.ZipUtil;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipException;
+import java.util.zip.ZipFile;
+import java.util.zip.ZipInputStream;
+
+/**
+ * un1acker
+ * 04.04.2015
+ */
+public class UnzipObject {
+    private File unzipFile;
+
+    public UnzipObject(String unzipFileName) throws ZipException {
+        if (!ZipUtil.isStringNotNullAndNotEmpty(unzipFileName) || !unzipFileName.endsWith(".zip")) {
+            throw new ZipException("fileName does not satisfy requirements");
+        }
+        this.unzipFile = new File(ZipUtil.WORK_DIRECTORY, unzipFileName);
+    }
+
+    public String getZipFileComment() throws IOException {
+        return new ZipFile(unzipFile).getComment();
+    }
+
+    public void extractAll(String folderName) throws IOException {
+        if (!ZipUtil.isStringNotNullAndNotEmpty(folderName)) {
+            throw new ZipException("folderName to extracting zip is null or empty");
+        }
+        File outputFolder = newOutputFolder(folderName);
+        if (!outputFolder.exists()) {
+            outputFolder.mkdir();
+        }
+        ZipInputStream zis = new ZipInputStream(new FileInputStream(unzipFile));
+        ZipEntry zipEntry = zis.getNextEntry();
+        while (zipEntry != null) {
+            String fileName = zipEntry.getName();
+            File newFile = new File(outputFolder.getAbsolutePath(), fileName);
+            System.out.println("file unzip : " + newFile.getAbsoluteFile());
+            new File(newFile.getParent()).mkdirs();
+            FileOutputStream fos = new FileOutputStream(newFile);
+            ZipUtil.copy(zis, fos);
+            fos.flush();
+            fos.close();
+            zipEntry = zis.getNextEntry();
+        }
+        zis.closeEntry();
+        zis.close();
+        System.out.println("Done");
+    }
+
+    private File newOutputFolder(String folderPath) {
+        if (folderPath == null) {
+            String path = unzipFile.getAbsolutePath().substring(0, unzipFile.getAbsolutePath().length() - 3);
+            return new File(path);
+        }
+        return new File(folderPath);
+    }
+}

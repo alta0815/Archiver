@@ -1,4 +1,5 @@
 *.iml
+*.zip
 .idea/
 target/
 pom.xml.tag
