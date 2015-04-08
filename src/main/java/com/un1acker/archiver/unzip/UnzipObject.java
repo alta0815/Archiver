@@ -30,9 +30,6 @@ public class UnzipObject {
     }
 
     public void extractAll(String folderName) throws IOException {
-        if (!ZipUtil.isStringNotNullAndNotEmpty(folderName)) {
-            throw new ZipException("folderName to extracting zip is null or empty");
-        }
         File outputFolder = newOutputFolder(folderName);
         if (!outputFolder.exists()) {
             outputFolder.mkdir();
@@ -42,7 +39,7 @@ public class UnzipObject {
         while (zipEntry != null) {
             String fileName = zipEntry.getName();
             File newFile = new File(outputFolder.getAbsolutePath(), fileName);
-            System.out.println("file unzip : " + newFile.getAbsoluteFile());
+            System.out.print("file unzip : " + newFile.getAbsoluteFile() + "\n");
             new File(newFile.getParent()).mkdirs();
             FileOutputStream fos = new FileOutputStream(newFile);
             ZipUtil.copy(zis, fos);
@@ -52,7 +49,6 @@ public class UnzipObject {
         }
         zis.closeEntry();
         zis.close();
-        System.out.println("Done");
     }
 
     private File newOutputFolder(String folderPath) {

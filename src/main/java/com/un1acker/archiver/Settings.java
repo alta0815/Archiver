@@ -56,4 +56,3 @@ public class Settings {
         return unzipFileName;
     }
 }
-

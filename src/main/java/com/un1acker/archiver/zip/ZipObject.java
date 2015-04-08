@@ -45,7 +45,7 @@ public class ZipObject {
         return true;
     }
 
-    public boolean addFilesToExistingZip(List<String> filesToZip, String commentToZip)
+    private boolean addFilesToExistingZip(List<String> filesToZip, String commentToZip)
             throws IOException {
         File tmpZip = File.createTempFile(zipFile.getName(), null);
         tmpZip.delete();
@@ -83,7 +83,7 @@ public class ZipObject {
 
     private void addFiles(List<String> filesToZip, ZipOutputStream out) throws IOException {
         for (String file : generateFilePathList(filesToZip)) {
-            System.out.println("File added : " + file + "\n");
+            System.out.print("File added : " + file + "\n");
             FileInputStream fis = new FileInputStream(new File(ZipUtil.WORK_DIRECTORY, file));
             out.putNextEntry(new ZipEntry(file));
             ZipUtil.copy(fis, out);
@@ -92,7 +92,7 @@ public class ZipObject {
         }
     }
 
-    public List<String> generateFilePathList(List<String> filesPathList) {
+    private List<String> generateFilePathList(List<String> filesPathList) {
         List<String> allFilesPathList = new ArrayList<>();
         for (String file : filesPathList) {
             generateFilePathList(allFilesPathList, new File(ZipUtil.WORK_DIRECTORY, file));
@@ -100,7 +100,7 @@ public class ZipObject {
         return allFilesPathList;
     }
 
-    public void generateFilePathList(List<String> listFiles, File file) {
+    private void generateFilePathList(List<String> listFiles, File file) {
         if (file.isFile()) {
             listFiles.add(generateZipEntry(file.getAbsoluteFile().toString()));
         }
