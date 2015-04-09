@@ -36,7 +36,6 @@ public class ZipObject {
         if (zipFile.exists()) {
             return addFilesToExistingZip(filesToZip, commentToZip);
         }
-        System.out.println("Output to zip : " + zipFile + "\n");
         ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(this.zipFile));
         addFiles(filesToZip, zos);
         zos.setComment(commentToZip);

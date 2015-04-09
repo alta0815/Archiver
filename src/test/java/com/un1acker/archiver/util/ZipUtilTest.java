@@ -84,9 +84,7 @@ public class ZipUtilTest {
 
     @Test
     public void testIsFilesExistsFileNull() throws ZipException {
-        exception.expect(ZipException.class);
-        exception.expectMessage("Input file is null");
-        ZipUtil.isFilesExists(null);
+        assertEquals(ZipUtil.isFilesExists(null), false);
     }
 
     @Test

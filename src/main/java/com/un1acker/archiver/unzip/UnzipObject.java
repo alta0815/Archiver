@@ -29,7 +29,7 @@ public class UnzipObject {
         return new ZipFile(unzipFile).getComment();
     }
 
-    public void extractAll(String folderName) throws IOException {
+    public boolean extractAll(String folderName) throws IOException {
         File outputFolder = newOutputFolder(folderName);
         if (!outputFolder.exists()) {
             outputFolder.mkdir();
@@ -49,10 +49,11 @@ public class UnzipObject {
         }
         zis.closeEntry();
         zis.close();
+        return true;
     }
 
     private File newOutputFolder(String folderPath) {
-        if (folderPath == null) {
+        if (!ZipUtil.isStringNotNullAndNotEmpty(folderPath)) {
             String path = unzipFile.getAbsolutePath().substring(0, unzipFile.getAbsolutePath().length() - 3);
             return new File(path);
         }
