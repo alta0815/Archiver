@@ -1,7 +1,7 @@
 # Archiver
 utility providing zip/unzip functionality
 ###Run in cmd
-    java -jar Archiver-1.0.jar
+    java -jar Archiver-1.0.jar some commands
 ###Zip functionality
 * -zip VAL        : set name for zipFile
 * -files STRING[] : add files to zip
