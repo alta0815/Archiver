@@ -25,9 +25,12 @@ public class ZipObjectTest {
             File.separator + "resource" + File.separator + "zip";
     public static final String ZIP_SAVE_DIRECTORY = "src" + File.separator + "test" +
             File.separator + "resource" + File.separator + "unzip" + File.separator;
-    public static final String TEST_STRING = "File added : src\\test\\resource\\zip\\test\\test3.txt\n" +
-            "File added : src\\test\\resource\\zip\\test.txt\n" +
-            "File added : src\\test\\resource\\zip\\test1.txt\n";
+    public static final String TEST_STRING = "File added : src" + File.separator + "test" +
+            File.separator + "resource" + File.separator + "zip" + File.separator + "test" +
+            File.separator + "test3.txt\n" + "File added : src" + File.separator + "test" +
+            File.separator + "resource" + File.separator + "zip" + File.separator + "test.txt\n" +
+            "File added : src" + File.separator + "test" + File.separator + "resource" + File.separator +
+            "zip" + File.separator + "test1.txt\n";
     private ByteArrayOutputStream outContent;
 
     @Rule
