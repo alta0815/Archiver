@@ -11,7 +11,7 @@ import java.util.zip.ZipException;
  * un1acker
  * 04.04.2015
  */
-public class ZipUtil {
+public abstract class ZipUtil {
     private static final byte[] BUFFER = new byte[4096 * 1024];
     public static final String WORK_DIRECTORY = System.getProperty("user.dir");
 
