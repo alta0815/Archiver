@@ -15,6 +15,8 @@ import java.util.zip.ZipInputStream;
  * un1acker
  * 04.04.2015
  */
+//TODO naming should be - verb for method(what the method do), and noun - for class (what the object is)
+//TODO here it is a bad choise for class name, it is better suit for method
 public class UnzipObject {
     private File unzipFile;
 

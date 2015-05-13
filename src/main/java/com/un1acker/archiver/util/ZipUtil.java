@@ -11,6 +11,9 @@ import java.util.zip.ZipException;
  * un1acker
  * 04.04.2015
  */
+//TODO abstract classes are created to be extended from some concrete classes
+//TODO  for utils purpose use final classes (so you talk to programmer - not to extend you code)
+//TODO or if you want overriding ability use singlton or spring beans with non static methods
 public abstract class ZipUtil {
     private static final byte[] BUFFER = new byte[4096 * 1024];
     public static final String WORK_DIRECTORY = System.getProperty("user.dir");

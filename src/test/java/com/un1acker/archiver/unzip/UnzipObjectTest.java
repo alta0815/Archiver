@@ -18,6 +18,7 @@ import static org.junit.Assert.*;
 public class UnzipObjectTest {
     public static final String WORK_FILE = "src" + File.separator + "test" +
             File.separator + "resource" + File.separator + "unzip" + File.separator;
+    //TODO variable can be converted to local
     private ByteArrayOutputStream outContent;
 
     @Rule
