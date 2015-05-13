@@ -1,5 +1,6 @@
 package com.un1acker.archiver.zip;
 
+import com.sun.deploy.util.StringUtils;
 import com.un1acker.archiver.util.ZipUtil;
 
 import java.io.File;
@@ -19,6 +20,8 @@ public class ZipObject {
     private File zipFile;
 
     public ZipObject(String fileName) throws ZipException {
+        //TODO there are standart library for this purpose - to check empty string
+        //TODO see http://stackoverflow.com/questions/7337070/apaches-stringutils-isblankstr-vs-guavas-strings-isnulloremptystr-should
         if (!ZipUtil.isStringNotNullAndNotEmpty(fileName) || !fileName.endsWith(".zip")) {
             throw new ZipException("fileName does not satisfy requirements");
         }

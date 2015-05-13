@@ -47,9 +47,11 @@ public class ZipObjectTest {
         System.setOut(null);
     }
 
-    @Test
+    //TODO For me it is better to use in anotation (expected = ZipException.class)
+    //TODO In this case you code is more compact
+    @Test(expected = ZipException.class)
     public void testConstructorFileNameNull() throws ZipException {
-        exception.expect(ZipException.class);
+        //exception.expect(ZipException.class);
         ZipObject zip = new ZipObject(null);
     }
 

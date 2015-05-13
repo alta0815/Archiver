@@ -31,9 +31,12 @@ public class ZipUtilTest {
         assertEquals(ZipUtil.isStringNotNullAndNotEmpty("hello"), true);
     }
 
+    //TODO You also can write you own matcher
+    //TODO http://stackoverflow.com/questions/19256175/how-to-use-hamcrest-to-test-for-exception
     @Test
     public void testIsFileExistsPathNull() throws ZipException {
         exception.expect(ZipException.class);
+        //TODO Good!
         exception.expectMessage("path is null or empty");
         ZipUtil.isFileExists((String) null);
     }
